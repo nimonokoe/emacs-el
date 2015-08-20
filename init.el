@@ -59,13 +59,13 @@
 ;; ROS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Load the library and start it up
-(require 'rosemacs)
-(invoke-rosemacs)
+;; ;; Load the library and start it up
+;; (require 'rosemacs)
+;; (invoke-rosemacs)
 
-;; Optional but highly recommended: add a prefix for quick access
-;; to the rosemacs commands
-(global-set-key "\C-x\C-r" ros-keymap)
+;; ;; Optional but highly recommended: add a prefix for quick access
+;; ;; to the rosemacs commands
+;; (global-set-key "\C-x\C-r" ros-keymap)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;perl用の設定
@@ -178,32 +178,32 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; YaTeX
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path "~/.emacs.d/site-lisp/yatex")
-(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-(setq auto-mode-alist
-      (append '(("\\.tex$" . yatex-mode)
-                ("\\.ltx$" . yatex-mode)
-                ("\\.cls$" . yatex-mode)
-                ("\\.sty$" . yatex-mode)
-                ("\\.clo$" . yatex-mode)
-                ("\\.bbl$" . yatex-mode)) auto-mode-alist))
-(defvar YaTeX-inhibit-prefix-letter)
-(setq YaTeX-inhibit-prefix-letter nil)
-(defvar YaTeX-kanji-code)
-(setq YaTeX-kanji-code 4
-      ;; Yatex-latex-message-code 'utf-8
-      )
-(defvar YaTeX-use-LaTeX2e)
-(setq YaTeX-use-LaTeX2e t)
-(defvar YaTeX-use-AMS-LaTeX)
-(setq YaTeX-use-AMS-LaTeX t)
-(defvar YaTeX-dvi2-command-ext-alist)
-(setq YaTeX-dvi2-command-ext-alist
-      '(("[agx]dvi\\|dviout" . ".dvi")
-        ("gv" . ".ps")
-        ("texworks\\|evince\\|okular\\|zathura\\|qpdfview\\|pdfviewer\\|mupdf\\|xpdf\\|firefox\\|acroread\\|pdfopen" . ".pdf")))
-(defvar tex-command)
-(setq tex-command "sh ~/.platex2pdf")
+;; (add-to-list 'load-path "~/.emacs.d/site-lisp/yatex")
+;; (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+;; (setq auto-mode-alist
+;;       (append '(("\\.tex$" . yatex-mode)
+;;                 ("\\.ltx$" . yatex-mode)
+;;                 ("\\.cls$" . yatex-mode)
+;;                 ("\\.sty$" . yatex-mode)
+;;                 ("\\.clo$" . yatex-mode)
+;;                 ("\\.bbl$" . yatex-mode)) auto-mode-alist))
+;; (defvar YaTeX-inhibit-prefix-letter)
+;; (setq YaTeX-inhibit-prefix-letter nil)
+;; (defvar YaTeX-kanji-code)
+;; (setq YaTeX-kanji-code 4
+;;       ;; Yatex-latex-message-code 'utf-8
+;;       )
+;; (defvar YaTeX-use-LaTeX2e)
+;; (setq YaTeX-use-LaTeX2e t)
+;; (defvar YaTeX-use-AMS-LaTeX)
+;; (setq YaTeX-use-AMS-LaTeX t)
+;; (defvar YaTeX-dvi2-command-ext-alist)
+;; (setq YaTeX-dvi2-command-ext-alist
+;;       '(("[agx]dvi\\|dviout" . ".dvi")
+;;         ("gv" . ".ps")
+;;         ("texworks\\|evince\\|okular\\|zathura\\|qpdfview\\|pdfviewer\\|mupdf\\|xpdf\\|firefox\\|acroread\\|pdfopen" . ".pdf")))
+;; (defvar tex-command)
+;; (setq tex-command "sh ~/.platex2pdf")
 ;; (setq tex-command "ptex2pdf -l -ot '-synctex=1'")
 ;(setq tex-command "ptex2pdf -l -u -ot '-synctex=1'")
 ;(setq tex-command "pdfplatex")
@@ -417,9 +417,9 @@
 (require 'ido)
 (ido-mode t)
      
-;; Rinari
-(add-to-list 'load-path "~/.emacs.d/rinari")
-(require 'rinari)
+;; ;; Rinari
+;; (add-to-list 'load-path "~/.emacs.d/rinari")
+;; (require 'rinari)
 
 ;; ruby-mode
 (add-to-list 'load-path "~/.emacs.d/ruby-mode")
@@ -439,18 +439,18 @@
 (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
 
 ;; ruby-electric.el --- electric editing commands for ruby files
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+;; (require 'ruby-electric)
+;; (add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
 
 ;; set ruby-mode indent
 (setq ruby-indent-level 2)
 (setq ruby-indent-tabs-mode nil)
 
 ;; ;;; rhtml-mode
-(add-to-list 'load-path "~/.emacs.d/rhtml")
-(require 'rhtml-mode)
-(add-hook 'rhtml-mode-hook
-    (lambda () (rinari-launch)))
+;; (add-to-list 'load-path "~/.emacs.d/rhtml")
+;; (require 'rhtml-mode)
+;; (add-hook 'rhtml-mode-hook
+;;     (lambda () (rinari-launch)))
 
 ;; yasnippet
 (add-to-list 'load-path "~/.emacs.d/yasnippets")
