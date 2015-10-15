@@ -1,5 +1,5 @@
 ;;;elファイルの読み込み
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/elisp/")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;基本設定
@@ -15,20 +15,20 @@
 
 
 ;auto-complete
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
+(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete")
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict/")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elisp/auto-complete/ac-dict/")
 (ac-config-default)
 
 ;; ;auto-install
-;; (add-to-list 'load-path "~/.emacs.d/auto-install")
+;; (add-to-list 'load-path "~/.emacs.d/elisp/auto-install")
 ;; (require 'auto-install)
-;; (setq auto-install-directory "~/.emacs.d/auto-install")
+;; (setq auto-install-directory "~/.emacs.d/elisp/auto-install")
 ;; (auto-install-update-emacswiki-package-name t)
 ;; (auto-install-compatibility-setup)  
 
 ;color-theme
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+(add-to-list 'load-path "~/.emacs.d/elisp/color-theme-6.6.0")
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
@@ -76,14 +76,14 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;python用の設定
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (load-file "~/.emacs.d/emacs-for-python/epy-init.el")
+;; (load-file "~/.emacs.d/elisp/emacs-for-python/epy-init.el")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;php用の設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;php用の設定
-(add-to-list 'load-path "~/.emacs.d/php-mode-1.5.0")
+(add-to-list 'load-path "~/.emacs.d/elisp/php-mode-1.5.0")
 (autoload 'php-mode "php-mode")
 (setq auto-mode-alist
       (cons '("\\.php\\'" . php-mode) auto-mode-alist))
@@ -131,7 +131,7 @@
 (setq user-mail-address "coffeegg89@gmail.com")
 
 ;; テンプレートのディレクトリ
-(setq auto-insert-directory "~/.emacs.d/templates/")
+(setq auto-insert-directory "~/.emacs.d/elisp/templates/")
 
 ;; 各ファイルによってテンプレートを切り替える
 (setq auto-insert-alist
@@ -146,7 +146,7 @@
                ("Makefile.all$" . ["Makefile.all" my-template])
                ("Makefile.target$" . ["Makefile.target" my-template])
                ) auto-insert-alist))
-(require 'cl)
+;; (require 'cl)
 
 ;; ここが腕の見せ所
 (defvar template-replacements-alists
@@ -167,7 +167,7 @@
   (mapc #'(lambda(c)
         (progn
           (goto-char (point-min))
-          (replace-string (car c) (funcall (cdr c)) nil)))
+          (replace-match (car c) (funcall (cdr c)) nil)))
     template-replacements-alists)
   (goto-char (point-max))
   (message "done."))
@@ -178,7 +178,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; YaTeX
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (add-to-list 'load-path "~/.emacs.d/site-lisp/yatex")
+;; (add-to-list 'load-path "~/.emacs.d/elisp/site-lisp/yatex")
 ;; (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 ;; (setq auto-mode-alist
 ;;       (append '(("\\.tex$" . yatex-mode)
@@ -223,159 +223,159 @@
 ;(setq tex-command "latexmk -e '$pdflatex=q/lualatex -synctex=1/' -e '$bibtex=q/bibtexu/' -e '$makeindex=q/texindy/' -norc -gg -pdf")
 ;(setq tex-command "latexmk -e '$pdflatex=q/luajitlatex -synctex=1/' -e '$bibtex=q/bibtexu/' -e '$makeindex=q/texindy/' -norc -gg -pdf")
 ;(setq tex-command "latexmk -e '$pdflatex=q/xelatex -synctex=1/' -e '$bibtex=q/bibtexu/' -e '$makeindex=q/texindy/' -norc -gg -xelatex")
-(defvar bibtex-command)
-(setq bibtex-command (cond ((string-match "uplatex\\|-u" tex-command) "upbibtex")
-                           ((string-match "platex" tex-command) "pbibtex")
-                           ((string-match "lualatex\\|luajitlatex\\|xelatex" tex-command) "bibtexu")
-                           ((string-match "pdflatex\\|latex" tex-command) "bibtex")
-                           (t "pbibtex")))
-(defvar makeindex-command)
-(setq makeindex-command (cond ((string-match "uplatex\\|-u" tex-command) "mendex")
-                              ((string-match "platex" tex-command) "mendex")
-                              ((string-match "lualatex\\|luajitlatex\\|xelatex" tex-command) "texindy")
-                              ((string-match "pdflatex\\|latex" tex-command) "makeindex")
-                              (t "mendex")))
-(defvar dvi2-command)
-(setq dvi2-command "evince")
+;; (defvar bibtex-command)
+;; (setq bibtex-command (cond ((string-match "uplatex\\|-u" tex-command) "upbibtex")
+;;                            ((string-match "platex" tex-command) "pbibtex")
+;;                            ((string-match "lualatex\\|luajitlatex\\|xelatex" tex-command) "bibtexu")
+;;                            ((string-match "pdflatex\\|latex" tex-command) "bibtex")
+;;                            (t "pbibtex")))
+;; (defvar makeindex-command)
+;; (setq makeindex-command (cond ((string-match "uplatex\\|-u" tex-command) "mendex")
+;;                               ((string-match "platex" tex-command) "mendex")
+;;                               ((string-match "lualatex\\|luajitlatex\\|xelatex" tex-command) "texindy")
+;;                               ((string-match "pdflatex\\|latex" tex-command) "makeindex")
+;;                               (t "mendex")))
+;; (defvar dvi2-command)
+;; (setq dvi2-command "evince")
 ;(setq dvi2-command "okular --unique")
 ;(setq dvi2-command "zathura -s -x \"emacsclient --no-wait +%{line} %{input}\"")
 ;(setq dvi2-command "qpdfview --unique")
 ;(setq dvi2-command "pdfviewer")
 ;(setq dvi2-command "texworks")
 ;(setq dvi2-command "firefox -new-window")
-(defvar dviprint-command-format)
-(setq dviprint-command-format "acroread `echo %s | sed -e \"s/\\.[^.]*$/\\.pdf/\"`")
+;; (defvar dviprint-command-format)
+;; (setq dviprint-command-format "acroread `echo %s | sed -e \"s/\\.[^.]*$/\\.pdf/\"`")
 
-(defun evince-forward-search ()
-  (interactive)
-  (let* ((ctf (buffer-name))
-         (mtf)
-         (pf)
-         (ln (format "%d" (line-number-at-pos)))
-         (cmd "fwdevince")
-         (args))
-    (if (YaTeX-main-file-p)
-        (setq mtf (buffer-name))
-      (progn
-	(defvar YaTeX-parent-file)
-        (if (equal YaTeX-parent-file nil)
-            (save-excursion
-              (YaTeX-visit-main t)))
-        (setq mtf YaTeX-parent-file)))
-    (setq pf (concat (car (split-string mtf "\\.")) ".pdf"))
-    (setq args (concat "\"" pf "\" " ln " \"" ctf "\""))
-    (message (concat cmd " " args))
-    (process-query-on-exit-flag
-     (start-process-shell-command "fwdevince" nil cmd args))))
+;; (defun evince-forward-search ()
+;;   (interactive)
+;;   (let* ((ctf (buffer-name))
+;;          (mtf)
+;;          (pf)
+;;          (ln (format "%d" (line-number-at-pos)))
+;;          (cmd "fwdevince")
+;;          (args))
+;;     (if (YaTeX-main-file-p)
+;;         (setq mtf (buffer-name))
+;;       (progn
+;; 	(defvar YaTeX-parent-file)
+;;         (if (equal YaTeX-parent-file nil)
+;;             (save-excursion
+;;               (YaTeX-visit-main t)))
+;;         (setq mtf YaTeX-parent-file)))
+;;     (setq pf (concat (car (split-string mtf "\\.")) ".pdf"))
+;;     (setq args (concat "\"" pf "\" " ln " \"" ctf "\""))
+;;     (message (concat cmd " " args))
+;;     (process-query-on-exit-flag
+;;      (start-process-shell-command "fwdevince" nil cmd args))))
 
-(add-hook 'yatex-mode-hook
-          '(lambda ()
-             (define-key YaTeX-mode-map (kbd "C-c e") 'evince-forward-search)))
+;; (add-hook 'yatex-mode-hook
+;;           '(lambda ()
+;;              (define-key YaTeX-mode-map (kbd "C-c e") 'evince-forward-search)))
 
-(require 'dbus)
+;; (require 'dbus)
 
-(defun un-urlify (fname-or-url)
-  "A trivial function that replaces a prefix of file:/// with just /."
-  (if (string= (substring fname-or-url 0 8) "file:///")
-      (substring fname-or-url 7)
-    fname-or-url))
+;; (defun un-urlify (fname-or-url)
+;;   "A trivial function that replaces a prefix of file:/// with just /."
+;;   (if (string= (substring fname-or-url 0 8) "file:///")
+;;       (substring fname-or-url 7)
+;;     fname-or-url))
 
-(defun evince-inverse-search (file linecol &rest ignored)
-  (let* ((fname (un-urlify file))
-         (buf (find-file fname))
-         (line (car linecol))
-         (col (cadr linecol)))
-    (if (null buf)
-        (message "[Synctex]: %s is not opened..." fname)
-      (switch-to-buffer buf)
-      (goto-line (car linecol))
-      (unless (= col -1)
-        (move-to-column col)))))
+;; (defun evince-inverse-search (file linecol &rest ignored)
+;;   (let* ((fname (un-urlify file))
+;;          (buf (find-file fname))
+;;          (line (car linecol))
+;;          (col (cadr linecol)))
+;;     (if (null buf)
+;;         (message "[Synctex]: %s is not opened..." fname)
+;;       (switch-to-buffer buf)
+;;       (forward-line (car linecol))
+;;       (unless (= col -1)
+;;         (move-to-column col)))))
 
-(dbus-register-signal
- :session nil "/org/gnome/evince/Window/0"
- "org.gnome.evince.Window" "SyncSource"
- 'evince-inverse-search)
+;; (dbus-register-signal
+;;  :session nil "/org/gnome/evince/Window/0"
+;;  "org.gnome.evince.Window" "SyncSource"
+;;  'evince-inverse-search)
 
-(defun okular-forward-search ()
-  (interactive)
-  (let* ((ctf (buffer-file-name))
-         (mtf)
-         (pf)
-         (ln (format "%d" (line-number-at-pos)))
-         (cmd "okular")
-         (args))
-    (if (YaTeX-main-file-p)
-        (setq mtf (buffer-name))
-      (progn
-	(defvar YaTeX-parent-file)
-        (if (equal YaTeX-parent-file nil)
-            (save-excursion
-              (YaTeX-visit-main t)))
-        (setq mtf YaTeX-parent-file)))
-    (setq pf (concat (car (split-string mtf "\\.")) ".pdf"))
-    (setq args (concat "--unique \"file:" pf "#src:" ln " " ctf "\""))
-    (message (concat cmd " " args))
-    (process-query-on-exit-flag
-     (start-process-shell-command "okular" nil cmd args))))
+;; (defun okular-forward-search ()
+;;   (interactive)
+;;   (let* ((ctf (buffer-file-name))
+;;          (mtf)
+;;          (pf)
+;;          (ln (format "%d" (line-number-at-pos)))
+;;          (cmd "okular")
+;;          (args))
+;;     (if (YaTeX-main-file-p)
+;;         (setq mtf (buffer-name))
+;;       (progn
+;; 	(defvar YaTeX-parent-file)
+;;         (if (equal YaTeX-parent-file nil)
+;;             (save-excursion
+;;               (YaTeX-visit-main t)))
+;;         (setq mtf YaTeX-parent-file)))
+;;     (setq pf (concat (car (split-string mtf "\\.")) ".pdf"))
+;;     (setq args (concat "--unique \"file:" pf "#src:" ln " " ctf "\""))
+;;     (message (concat cmd " " args))
+;;     (process-query-on-exit-flag
+;;      (start-process-shell-command "okular" nil cmd args))))
 
-(add-hook 'yatex-mode-hook
-          '(lambda ()
-             (define-key YaTeX-mode-map (kbd "C-c o") 'okular-forward-search)))
+;; (add-hook 'yatex-mode-hook
+;;           '(lambda ()
+;;              (define-key YaTeX-mode-map (kbd "C-c o") 'okular-forward-search)))
 
-(defun qpdfview-forward-search ()
-  (interactive)
-  (let* ((ctf (buffer-name))
-         (mtf)
-         (pf)
-         (ln (format "%d" (line-number-at-pos)))
-         (cmd "qpdfview")
-         (args))
-    (if (YaTeX-main-file-p)
-        (setq mtf (buffer-name))
-      (progn
-        (if (equal YaTeX-parent-file nil)
-            (save-excursion
-              (YaTeX-visit-main t)))
-        (setq mtf YaTeX-parent-file)))
-    (setq pf (concat (car (split-string mtf "\\.")) ".pdf"))
-    (setq args (concat "--unique \"" pf "#src:" ctf ":" ln ":0\""))
-    (message (concat cmd " " args))
-    (process-kill-without-query
-     (start-process-shell-command "qpdfview" nil cmd args))))
+;; (defun qpdfview-forward-search ()
+;;   (interactive)
+;;   (let* ((ctf (buffer-name))
+;;          (mtf)
+;;          (pf)
+;;          (ln (format "%d" (line-number-at-pos)))
+;;          (cmd "qpdfview")
+;;          (args))
+;;     (if (YaTeX-main-file-p)
+;;         (setq mtf (buffer-name))
+;;       (progn
+;;         (if (equal YaTeX-parent-file nil)
+;;             (save-excursion
+;;               (YaTeX-visit-main t)))
+;;         (setq mtf YaTeX-parent-file)))
+;;     (setq pf (concat (car (split-string mtf "\\.")) ".pdf"))
+;;     (setq args (concat "--unique \"" pf "#src:" ctf ":" ln ":0\""))
+;;     (message (concat cmd " " args))
+;;     (process-kill-without-query
+;;      (start-process-shell-command "qpdfview" nil cmd args))))
 
-(add-hook 'yatex-mode-hook
-          '(lambda ()
-             (define-key YaTeX-mode-map (kbd "C-c q") 'qpdfview-forward-search)))
+;; (add-hook 'yatex-mode-hook
+;;           '(lambda ()
+;;              (define-key YaTeX-mode-map (kbd "C-c q") 'qpdfview-forward-search)))
 
-(defun pdfviewer-forward-search ()
-  (interactive)
-  (let* ((ctf (buffer-name))
-         (mtf)
-         (pf)
-         (ln (format "%d" (line-number-at-pos)))
-         (cmd "pdfviewer")
-         (args))
-    (if (YaTeX-main-file-p)
-        (setq mtf (buffer-name))
-      (progn
-        (if (equal YaTeX-parent-file nil)
-            (save-excursion
-              (YaTeX-visit-main t)))
-        (setq mtf YaTeX-parent-file)))
-    (setq pf (concat (car (split-string mtf "\\.")) ".pdf"))
-    (setq args (concat "\"file:" pf "#src:" ln " " ctf "\""))
-    (message (concat cmd " " args))
-    (process-kill-without-query
-     (start-process-shell-command "pdfviewer" nil cmd args))))
+;; (defun pdfviewer-forward-search ()
+;;   (interactive)
+;;   (let* ((ctf (buffer-name))
+;;          (mtf)
+;;          (pf)
+;;          (ln (format "%d" (line-number-at-pos)))
+;;          (cmd "pdfviewer")
+;;          (args))
+;;     (if (YaTeX-main-file-p)
+;;         (setq mtf (buffer-name))
+;;       (progn
+;;         (if (equal YaTeX-parent-file nil)
+;;             (save-excursion
+;;               (YaTeX-visit-main t)))
+;;         (setq mtf YaTeX-parent-file)))
+;;     (setq pf (concat (car (split-string mtf "\\.")) ".pdf"))
+;;     (setq args (concat "\"file:" pf "#src:" ln " " ctf "\""))
+;;     (message (concat cmd " " args))
+;;     (process-kill-without-query
+;;      (start-process-shell-command "pdfviewer" nil cmd args))))
 
-(add-hook 'yatex-mode-hook
-          '(lambda ()
-             (define-key YaTeX-mode-map (kbd "C-c p") 'pdfviewer-forward-search)))
+;; (add-hook 'yatex-mode-hook
+;;           '(lambda ()
+;;              (define-key YaTeX-mode-map (kbd "C-c p") 'pdfviewer-forward-search)))
 
-(add-hook 'yatex-mode-hook
-          '(lambda ()
-             (auto-fill-mode -1)))
+;; (add-hook 'yatex-mode-hook
+;;           '(lambda ()
+;;              (auto-fill-mode -1)))
 
 ;;
 ;; RefTeX with YaTeX
@@ -392,7 +392,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; mark down
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path "~/.emacs.d/markdown-mode")
+(add-to-list 'load-path "~/.emacs.d/elisp/markdown-mode")
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
@@ -406,7 +406,7 @@
 ;;; packages in your .emacs.
 (when
     (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
+     (expand-file-name "~/.emacs.d/elisp/elpa/package.el"))
   (package-initialize))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -418,11 +418,11 @@
 (ido-mode t)
      
 ;; ;; Rinari
-;; (add-to-list 'load-path "~/.emacs.d/rinari")
+;; (add-to-list 'load-path "~/.emacs.d/elisp/rinari")
 ;; (require 'rinari)
 
 ;; ruby-mode
-(add-to-list 'load-path "~/.emacs.d/ruby-mode")
+(add-to-list 'load-path "~/.emacs.d/elisp/ruby-mode")
 (autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files" t)
 (setq auto-mode-alist (cons '("\\.rb$" . ruby-mode) auto-mode-alist))
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode)) interpreter-mode-alist))
@@ -447,62 +447,63 @@
 (setq ruby-indent-tabs-mode nil)
 
 ;; ;;; rhtml-mode
-;; (add-to-list 'load-path "~/.emacs.d/rhtml")
+;; (add-to-list 'load-path "~/.emacs.d/elisp/rhtml")
 ;; (require 'rhtml-mode)
 ;; (add-hook 'rhtml-mode-hook
 ;;     (lambda () (rinari-launch)))
 
 ;; yasnippet
-(add-to-list 'load-path "~/.emacs.d/yasnippets")
-(let ((emacs-major-version 22))
-  (unintern 'locate-dominating-file)
-  (unintern 'locate-dominating-stop-dir-regexp)
-  (require 'yasnippet))
-;(require 'yasnippet) ;; not yasnippet-bundle
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/yasnippet/snippets")
-;; rails-snippets
-(yas/load-directory "~/.emacs.d/yasnippets-rails/rails-snippets")
+;; (add-to-list 'load-path "~/.emacs.d/elisp/yasnippets")
+;; (let ((emacs-major-version 22))
+;;   (unintern 'locate-dominating-file)
+;;   (unintern 'locate-dominating-stop-dir-regexp)
+;;   (require 'yasnippet))
+;; ;(require 'yasnippet) ;; not yasnippet-bundle
+;; (yas/initialize)
+;; (yas/load-directory "~/.emacs.d/elisp/yasnippet/snippets")
+;; ;; rails-snippets
+;; (yas/load-directory "~/.emacs.d/elisp/yasnippets-rails/rails-snippets")
 
 
-;; flymake for ruby
-(require 'flymake)
-;; Invoke ruby with '-c' to get syntax checking
-(defun flymake-ruby-init ()
-(let* ((temp-file (flymake-init-create-temp-buffer-copy
-'flymake-create-temp-inplace))
-(local-file (file-relative-name
-temp-file
-(file-name-directory buffer-file-name))))
-(list "ruby" (list "-c" local-file))))
-(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
-(add-hook
-'ruby-mode-hook
-'(lambda ()
-;; Don't want flymake mode for ruby regions in rhtml files
-(if (not (null buffer-file-name)) (flymake-mode))
-;; エラー行で C-c d するとエラーの内容をミニバッファで表示する
-(define-key ruby-mode-map "\C-cd" 'credmp/flymake-display-err-minibuf)))
+;; ;; flymake for ruby
+;; (require 'flymake)
+;; ;; Invoke ruby with '-c' to get syntax checking
+;; (defun flymake-ruby-init ()
+;; (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;; 'flymake-create-temp-inplace))
+;; (local-file (file-relative-name
+;; temp-file
+;; (file-name-directory buffer-file-name))))
+;; (list "ruby" (list "-c" local-file))))
+;; (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
+;; (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+;; (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
+;; (add-hook
+;; 'ruby-mode-hook
+;; '(lambda ()
+;; ;; Don't want flymake mode for ruby regions in rhtml files
+;; (if (not (null buffer-file-name)) (flymake-mode))
+;; ;; エラー行で C-c d するとエラーの内容をミニバッファで表示する
+;; (define-key ruby-mode-map "\C-cd" 'credmp/flymake-display-err-minibuf)))
 
-(defun credmp/flymake-display-err-minibuf ()
-"Displays the error/warning for the current line in the minibuffer"
-(interactive)
-(let* ((line-no (flymake-current-line-no))
-(line-err-info-list (nth 0 (flymake-find-err-info flymake-err-info line-no)))
-(count (length line-err-info-list))
-)
-(while (> count 0)
-(when line-err-info-list
-(let* ((file (flymake-ler-file (nth (1- count) line-err-info-list)))
-(full-file (flymake-ler-full-file (nth (1- count) line-err-info-list)))
-(text (flymake-ler-text (nth (1- count) line-err-info-list)))
-(line (flymake-ler-line (nth (1- count) line-err-info-list))))
-(message "[%s] %s" line text)
-)
-)
-(setq count (1- count)))))
+;; (defun credmp/flymake-display-err-minibuf ()
+;; "Displays the error/warning for the current line in the minibuffer"
+;; (interactive)
+;; (let* ((line-no (flymake-current-line-no))
+;; (line-err-info-list (nth 0 (flymake-find-err-info flymake-err-info line-no)))
+;; (count (length line-err-info-list))
+;; )
+;; (while (> count 0)
+;; (when line-err-info-list
+;; (let* ((file (flymake-ler-file (nth (1- count) line-err-info-list)))
+;; (full-file (flymake-ler-full-file (nth (1- count) line-err-info-list)))
+;; (text (flymake-ler-text (nth (1- count) line-err-info-list)))
+;; (line (flymake-ler-line (nth (1- count) line-err-info-list))))
+;; (message "[%s] %s" line text)
+;; )
+;; )
+;; (setq count (1- count)))))
+
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; SCSS

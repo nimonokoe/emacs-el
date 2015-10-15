@@ -1,8 +1,0 @@
-/opt/ros/groovy/stacks/turtlebot_apps/turtlebot_teleop/src/turtlebot_joy.cpp
-/opt/ros/groovy/stacks/turtlebot_apps/turtlebot_teleop/src/#turtlebot_joy.cpp#
-/opt/ros/groovy/stacks/turtlebot_apps/turtlebot_teleop/param/mux.yaml
-/opt/ros/groovy/stacks/turtlebot_apps/turtlebot_teleop/param/#mux.yaml#
-/home/mechuser/ros/groovy/robot-programming/dxl_armed_turtlebot/launch/turtlebot_joystick_teleop.launch
-/home/mechuser/ros/groovy/robot-programming/dxl_armed_turtlebot/launch/#turtlebot_joystick_teleop.launch#
-/opt/ros/groovy/stacks/turtlebot_apps/turtlebot_teleop/launch/includes/_velocity_smoother.launch
-/opt/ros/groovy/stacks/turtlebot_apps/turtlebot_teleop/launch/includes/#_velocity_smoother.launch#
